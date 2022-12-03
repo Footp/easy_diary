@@ -1,3 +1,5 @@
+// ignore_for_file: invalid_use_of_protected_member
+
 import 'package:easy_diary/utils/func.dart';
 import 'package:easy_diary/utils/getx_controller.dart';
 import 'package:easy_diary/utils/theme.dart';
@@ -74,7 +76,7 @@ class MemoTimeBtn extends StatelessWidget {
             FilteringTextInputFormatter.allow(RegExp("[0-9]")),
           ],
           controller: TextEditingController(
-            text: c.dailyMemo[c.pickDate][index]['time'].substring(a, b),
+            text: c.dailyMemo[c.pickDate.value][index]['time'].substring(a, b),
           ),
           decoration: const InputDecoration(
             border: InputBorder.none,
@@ -91,7 +93,7 @@ class MemoTimeBtn extends StatelessWidget {
               extraMemoMap.sort((a, b) => a['time'].compareTo(b['time']));
               c.dailyMemo.remove(c.pickDate.value);
               c.dailyMemo[c.pickDate.value] = extraMemoMap;
-              hiveDataPut('memo', c.dailyMemo);
+              hiveDataPut('memo', c.dailyMemo.value);
             } else {
               null;
             }

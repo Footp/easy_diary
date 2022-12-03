@@ -53,9 +53,7 @@ class MyApp extends StatelessWidget {
     final c = Get.put(Controller());
     pickDate = DateTime.now();
     dateTrans(pickDate);
-    
     hiveDataGet();
-    Hive.box('EasyDiary').clear();
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -105,8 +103,7 @@ class MyApp extends StatelessWidget {
                   child: Column(
                     children: [
                       SizedBox(
-                        child:
-                            c.calVi.value == true ? const ShowCalendar() : null,
+                        child: c.calVi.value == true ? const Calendar() : null,
                       ),
                       Expanded(
                         child: SizedBox(

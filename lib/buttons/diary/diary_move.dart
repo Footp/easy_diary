@@ -1,3 +1,5 @@
+// ignore_for_file: invalid_use_of_protected_member
+
 import 'package:easy_diary/utils/func.dart';
 import 'package:easy_diary/utils/getx_controller.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +25,7 @@ class DiaryMoveUpBtn extends StatelessWidget {
           extraList[c.languageCount.value].removeAt(diaryMoveCount + 1);
           c.dailyDiary[c.pickDate.value] = extraList;
           diaryMoveCount--;
-          hiveDataPut('diary', c.dailyDiary);
+          hiveDataPut('diary', c.dailyDiary.value);
         }
       },
       child: const SizedBox(
@@ -54,7 +56,7 @@ class DiaryMoveDnBtn extends StatelessWidget {
           extraList[c.languageCount.value].removeAt(diaryMoveCount);
           c.dailyDiary[c.pickDate.value] = extraList;
           diaryMoveCount++;
-          hiveDataPut('diary', c.dailyDiary);
+          hiveDataPut('diary', c.dailyDiary.value);
         }
       },
       child: const SizedBox(

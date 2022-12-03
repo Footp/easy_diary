@@ -13,18 +13,22 @@ class DiaryAllCopyBtn extends StatelessWidget {
     final c = Get.put(Controller());
     return GestureDetector(
       onTap: () {
-        String extraString =
-            c.dailyDiary[c.pickDate.value][c.languageCount.value].join('\n');
-        Clipboard.setData(
-          ClipboardData(text: extraString),
-        ).then((_) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              duration: Duration(seconds: 1),
-              content: Text('클립보드에 복사되었습니다.'),
-            ),
-          );
-        });
+        if (c.dailyDiary[c.pickDate.value][c.languageCount.value].length == 0) {
+          null;
+        } else {
+          String extraString =
+              c.dailyDiary[c.pickDate.value][c.languageCount.value].join('\n');
+          Clipboard.setData(
+            ClipboardData(text: extraString),
+          ).then((_) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                duration: Duration(seconds: 1),
+                content: Text('클립보드에 복사되었습니다.'),
+              ),
+            );
+          });
+        }
       },
       child: Container(
         decoration: BoxDecoration(

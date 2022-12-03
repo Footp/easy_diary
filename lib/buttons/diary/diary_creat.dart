@@ -1,3 +1,5 @@
+// ignore_for_file: invalid_use_of_protected_member
+
 import 'package:easy_diary/utils/func.dart';
 import 'package:easy_diary/utils/getx_controller.dart';
 import 'package:flutter/material.dart';
@@ -12,16 +14,13 @@ class DiaryCreatBtn extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         c.textEditMode.value = true;
-        List extraList = [
-          [''],
-          ['']
-        ];
+        List extraList = [[], []];
         c.dailyDiary[c.pickDate.value].runtimeType == Null
             ? null
             : extraList = c.dailyDiary[c.pickDate.value];
         extraList[c.languageCount.value].add('');
         c.dailyDiary[c.pickDate.value] = extraList;
-        hiveDataPut('diary', c.dailyDiary);
+        hiveDataPut('diary', c.dailyDiary.value);
         scrollToMaxDown();
       },
       child: const Center(

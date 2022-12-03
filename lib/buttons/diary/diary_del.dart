@@ -1,3 +1,5 @@
+// ignore_for_file: invalid_use_of_protected_member
+
 import 'package:easy_diary/utils/func.dart';
 import 'package:easy_diary/utils/getx_controller.dart';
 import 'package:flutter/material.dart';
@@ -46,7 +48,7 @@ class DiaryDelBtn extends StatelessWidget {
                                 extraDiary[c.languageCount.value]
                                     .removeAt(index);
                                 c.dailyDiary[c.pickDate.value] = extraDiary;
-                                hiveDataPut('diary', c.dailyDiary);
+                                hiveDataPut('diary', c.dailyDiary.value);
                                 Navigator.pop(context);
                               },
                               child: const Text('삭제'),

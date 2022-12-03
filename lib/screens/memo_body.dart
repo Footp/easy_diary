@@ -1,4 +1,7 @@
+// ignore_for_file: invalid_use_of_protected_member
+
 import 'package:easy_diary/buttons/memo/memo_popup.dart';
+import 'package:easy_diary/screens/diary_body.dart';
 import 'package:easy_diary/utils/func.dart';
 import 'package:easy_diary/utils/getx_controller.dart';
 import 'package:easy_diary/utils/theme.dart';
@@ -120,6 +123,9 @@ class MemoBody extends StatelessWidget {
                             autofocus: true,
                             maxLength: 50,
                             enabled: true,
+                            controller: TextController(
+                                text: c.dailyMemo[c.pickDate.value][index]
+                                    [languageList[c.languageCount.value]]),
                             decoration: const InputDecoration(
                               border: InputBorder.none,
                             ),
@@ -130,7 +136,7 @@ class MemoBody extends StatelessWidget {
                               extraList[index]
                                   [languageList[c.languageCount.value]] = value;
                               c.dailyMemo[c.pickDate.value] = extraList;
-                              hiveDataPut('memo', c.dailyMemo);
+                              hiveDataPut('memo', c.dailyMemo.value);
                               Navigator.pop(context);
                             },
                           ),

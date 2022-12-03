@@ -15,7 +15,6 @@ Map testData = {
 // 메모, 다이어리 불러오기
 hiveDataGet() {
   final c = Get.put(Controller());
-
   Hive.box('EasyDiary').get('memo') == null
       ? null
       : c.dailyMemo.value = Hive.box('EasyDiary').get('memo');
@@ -26,16 +25,6 @@ hiveDataGet() {
 
 hiveDataPut(String storage, Map data) {
   Hive.box('EasyDiary').put(storage, data);
-}
-
-dateTime(DateTime date) {
-  String year = DateFormat('yyyy').format(pickDate);
-  String month = DateFormat('mm').format(pickDate);
-  String day = DateFormat('mm').format(pickDate);
-  String extraString = '$year$month$day';
-  // ignore: unused_local_variable
-  int extraInt;
-  return extraInt = int.parse(extraString);
 }
 
 dateTrans(DateTime date) {
@@ -71,8 +60,9 @@ String clipBoardString = '';
 // 시간+메모 합집합
 selectText(index) {
   final c = Get.put(Controller());
-  String extraTime = c.dailyMemo[c.pickDate][index]['time'].substring(0, 5);
-  String extraMemo = c.dailyMemo[c.pickDate][index]['memo'];
+  String extraTime =
+      c.dailyMemo[c.pickDate.value][index]['time'].substring(0, 5);
+  String extraMemo = c.dailyMemo[c.pickDate.value][index]['memo'];
   List extraList = [extraTime, extraMemo];
   return clipBoardString = extraList.join(' ');
 }

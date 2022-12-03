@@ -1,3 +1,5 @@
+// ignore_for_file: invalid_use_of_protected_member
+
 import 'package:easy_diary/buttons/diary/diary_popup.dart';
 import 'package:easy_diary/utils/func.dart';
 import 'package:easy_diary/utils/getx_controller.dart';
@@ -71,8 +73,11 @@ class DiaryBody extends StatelessWidget {
         height: 1.5,
       ),
       onChanged: (String value) {
-        c.dailyDiary[c.pickDate.value][c.languageCount.value][index] = value;
-        hiveDataPut('diary', c.dailyDiary);
+        List extraList = [];
+        extraList = c.dailyDiary[c.pickDate.value];
+        extraList[c.languageCount.value][index] = value;
+        c.dailyDiary[c.pickDate.value] = extraList;
+        hiveDataPut('diary', c.dailyDiary.value);
       },
     );
   }

@@ -10,8 +10,6 @@ class Controller extends GetxController {
   var calVi = true.obs; // 캘린더 활성/비활성
   RxInt dailyFormat = 1.obs;
   RxString pickDate = ''.obs; // 선택날짜 표시
-  RxInt pickDateInt = 0.obs;
-  RxList dateList = [].obs;
 
   // 데이터 관련
   RxMap dailyMemo = {}.obs;
@@ -29,4 +27,6 @@ class Controller extends GetxController {
   // 모드변경 관련
   RxBool selectMode = false.obs;
   RxBool textEditMode = false.obs;
+
+  RxBool calendarDummy = false.obs;
 }
