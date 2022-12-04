@@ -60,10 +60,15 @@ class MyApp extends StatelessWidget {
           backgroundColor: const Color(0xffE6E4E9),
           elevation: 1,
           centerTitle: false,
+          // leading: const Icon(
+          //   Icons.menu,
+          //   color: Colors.black,
+          // ),
           title: Obx(
             () => Text(
-              c.pickDate.value,
+              c.pickDate.value.substring(5),
               style: textStyle_title,
+              textAlign: TextAlign.start,
             ),
           ),
           actions: [

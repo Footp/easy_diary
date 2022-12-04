@@ -39,6 +39,7 @@ class _CalendarState extends State<Calendar> {
               focusedDay: selectedDay,
               firstDay: DateTime.utc(2022),
               lastDay: DateTime.utc(2030),
+              daysOfWeekHeight: 30,
               headerVisible: true,
               headerStyle: const HeaderStyle(
                 titleCentered: true,
