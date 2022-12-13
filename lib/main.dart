@@ -7,6 +7,7 @@ import 'package:easy_diary/utils/func.dart';
 import 'package:easy_diary/utils/getx_controller.dart';
 import 'package:easy_diary/utils/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -18,19 +19,23 @@ void main() async {
   await initialization(null);
 
   runApp(
-    const GetMaterialApp(
+    GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: '쉬운일기',
-      home: MyApp(),
-      localizationsDelegates: [
+      home: const MyApp(),
+      localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      supportedLocales: [
+      supportedLocales: const [
         Locale('ko', 'KR'),
       ],
-      locale: Locale('ko'),
+      locale: const Locale('ko'),
+      theme: ThemeData(
+        appBarTheme:
+            const AppBarTheme(systemOverlayStyle: SystemUiOverlayStyle.light),
+      ),
     ),
   );
   FlutterNativeSplash.remove();
@@ -50,6 +55,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
     final c = Get.put(Controller());
     pickDate = DateTime.now();
     dateTrans(pickDate);
