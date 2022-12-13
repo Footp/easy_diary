@@ -83,7 +83,7 @@ class MemoTimeBtn extends StatelessWidget {
             counterText: '',
           ),
           style: textStyle_basic,
-          onSubmitted: (value) {
+          onChanged: (value) {
             if (value.isNotEmpty) {
               value.length == 1 ? value = '0$value' : null;
               value = value.toString();
@@ -97,7 +97,6 @@ class MemoTimeBtn extends StatelessWidget {
             } else {
               null;
             }
-            Navigator.pop(context);
           },
         ),
       ),

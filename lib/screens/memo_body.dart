@@ -121,7 +121,7 @@ class MemoBody extends StatelessWidget {
                           width: size.width,
                           child: TextField(
                             autofocus: true,
-                            maxLength: 50,
+                            maxLength: c.languageCount.value == 0 ? 50 : 200,
                             enabled: true,
                             controller: TextController(
                                 text: c.dailyMemo[c.pickDate.value][index]
